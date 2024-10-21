@@ -86,7 +86,7 @@ describe('BankAccount', () => {
 
     const balanceOld = bankAccount.getBalance();
 
-    jest.spyOn(bankAccount, 'fetchBalance').mock;
+    jest.spyOn(bankAccount, 'fetchBalance').mockResolvedValue(50);
 
     await bankAccount.synchronizeBalance();
 
