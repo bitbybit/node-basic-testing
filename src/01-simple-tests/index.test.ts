@@ -58,7 +58,7 @@ describe('simpleCalculator tests', () => {
       action: '%',
     });
 
-    expect(result).toBe(null);
+    expect(result).toBeNull();
   });
 
   test('should return null for invalid arguments', () => {
@@ -68,6 +68,6 @@ describe('simpleCalculator tests', () => {
       action: Action.Add,
     });
 
-    expect(result).toBe(null);
+    expect(result).toBeNull();
   });
 });
