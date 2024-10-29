@@ -44,6 +44,8 @@ describe('doStuffByTimeout', () => {
 
     doStuffByTimeout(callback, 2000);
 
+    expect(callback).toHaveBeenCalledTimes(0);
+
     jest.advanceTimersByTime(2000);
 
     expect(callback).toHaveBeenCalledTimes(1);
@@ -74,6 +76,8 @@ describe('doStuffByInterval', () => {
     const callback = jest.fn();
 
     doStuffByInterval(callback, 1000);
+
+    expect(callback).toHaveBeenCalledTimes(0);
 
     jest.advanceTimersByTime(1000 * 3);
 
