@@ -4,6 +4,7 @@ import {
   SynchronizationFailedError,
   TransferFailedError,
 } from './index';
+import _ from 'lodash';
 
 describe('BankAccount', () => {
   test('should create account with initial balance', () => {
@@ -69,16 +70,14 @@ describe('BankAccount', () => {
   test('fetchBalance should return number in case if request did not failed', async () => {
     const bankAccount = getBankAccount(1000);
 
-    jest.spyOn(bankAccount, 'fetchBalance').mockImplementation(async () => {
-      const balance = 100;
-      const requestFailed = false;
-
-      return requestFailed ? null : balance;
-    });
+    jest.spyOn(_, 'random').mockReturnValueOnce(100);
+    jest.spyOn(_, 'random').mockReturnValueOnce(1);
 
     const balance = await bankAccount.fetchBalance();
 
     expect(balance).toBe(100);
+
+    (_.random as jest.Mock).mockRestore();
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
